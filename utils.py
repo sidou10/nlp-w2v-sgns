@@ -1,16 +1,12 @@
 import numpy as np
 from math import exp, log
 from tqdm import tqdm_notebook
-from scipy.special import expit
 from nltk.probability import FreqDist
 import random
 
 
 def log_sigmoid(x):
-    try:
-        return log(expit(x))
-    except ValueError:
-        print("x:{}".format(x))
+    return -log(1+exp(-x))
 
 def update_voc(voc_dict, word, index):
     # (word: index, count)
@@ -38,7 +34,6 @@ def getPairsAndVocs(sentences, winSize):
                     context_voc, context_index = update_voc(context_voc, context, context_index)
                     wc_pairs.append((word_voc[word], context_voc[context]))
     
-    np.random.shuffle(wc_pairs)
     return wc_pairs, word_voc, context_voc
 
 def getNegPairs(wc_pairs, word_voc, context_voc, negativeRate):
@@ -58,7 +53,6 @@ def getNegPairs(wc_pairs, word_voc, context_voc, negativeRate):
             context = wc_pairs[context_idx][1]
             neg_wc_pairs.append((word,context))
 
-    np.random.shuffle(neg_wc_pairs)
     return neg_wc_pairs
     
 def costFunction(theta, nEmbed, wc_pairs, neg_wc_pairs, nb_words, nb_contexts):
@@ -123,4 +117,3 @@ def remove_rare_words(sentences, minCount):
         sentences_w_min_count.append(sent_w_min_count)
 
     return sentences_w_min_count
-
