@@ -98,6 +98,3 @@ Training on sentences.txt and printing the 10 most similar to "man"
 (0.84601751259737101, 'female')
 (0.83840653298179013, 'outfit')
 ```
-
-Training on sentences.txt and printing the 10 most similar to "
-## Interesting results
