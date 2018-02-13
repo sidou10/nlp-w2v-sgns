@@ -5,7 +5,7 @@ import pandas as pd
 # useful stuff
 import re
 import time
-from math import exp
+from math import exp, log
 import pickle
 import string
 import numpy as np
@@ -245,9 +245,6 @@ class mySkipGram:
         word_voc_list = list(word_voc.keys())
         context_voc_list = list(context_voc.keys())
         
-        nb_words = len(word_voc_list)
-        nb_contexts = len(context_voc_list)
-        
         nb_pairs = len(wc_pairs)
         neg_wc_pairs = []
 
@@ -274,6 +271,10 @@ class mySkipGram:
 
         return sentences_w_min_count
 
+    '''
+    Subsample removes some important words (for example, name of characters) in the corpus. We decided not to use it. 
+    Remark: If we had many input corpuses, we would have use a tf-idf to solve this issue
+    '''
     #def subsample(self, sentences, threshold):
     #    '''
     #    Returns subsampled sentences, i.e. sentences after having removed words
@@ -371,7 +372,8 @@ if __name__ == '__main__':
     else:
         pairs = loadPairs(opts.text)
         W, word_voc = mySkipGram.load(opts.model)
-        #mySkipGram.print_n_most_similar(W, 10, "achilles", word_voc)
+        #mySkipGram.print_n_most_similar(W, 10, "scone", word_voc)
+        
         for a,b,_ in pairs:
             print(a, b, mySkipGram.similarity(a,b,W,word_voc))
 
