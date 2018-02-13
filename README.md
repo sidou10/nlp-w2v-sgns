@@ -71,7 +71,7 @@ Training on oddyssey.txt and printing the 10 words the most similar to "achilles
 (0.87143968241241565, 'idomeneus')
 ```
 
-Training on sentences.txt and printing the 10 most similar to "blue"
+Training on sentences.txt and printing the 10 words the most similar to "blue"
 ```
 (0.9563631433212999, 'green')
 (0.9526111037594357, 'red')
@@ -85,7 +85,7 @@ Training on sentences.txt and printing the 10 most similar to "blue"
 (0.91262585867689616, 'denim')
 ```
 
-Training on sentences.txt and printing the 10 most similar to "man"
+Training on sentences.txt and printing the 10 words the most similar to "man"
 ```
 (0.92840613535955896, 'woman')
 (0.88753333292909398, 'guy')
